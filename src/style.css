@@ -1,7 +1,34 @@
-.hello {
-  color: red;
-}
-
 body {
   background-color: whitesmoke;
+}
+
+.container {
+  width: 500px;
+  height: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+h2 {
+  padding-left: 40px;
+  color: grey;
+}
+
+input {
+  height: 40px;
+  font-size: larger;
+  border: none;
+  border-bottom: thin solid lightgray;
+  border-top: thin solid lightgray;
+  padding-left: 40px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.todos {
+  height: 50px;
 }

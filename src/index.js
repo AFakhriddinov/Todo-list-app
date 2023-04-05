@@ -1,14 +1,20 @@
 import _ from "lodash";
 import "./style.css";
 
-function component() {
-  const element = document.createElement("div");
-
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(["Hello", "webpack"], " ");
-  element.classList.add("hello");
-
-  return element;
-}
-
-document.body.appendChild(component());
+const array = [
+  {
+    index: 0,
+    description: "Mow the lawn",
+    completed: false,
+  },
+  {
+    index: 0,
+    description: "Feed pets",
+    completed: false,
+  },
+  {
+    index: 0,
+    description: "Workout",
+    completed: false,
+  },
+];
