@@ -1,0 +1,108 @@
+body {
+  background-color: whitesmoke;
+}
+
+.container {
+  width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin-top: 80px;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+}
+
+#refresh {
+  content: url(./asset/refresh.png);
+  width: 30px;
+  align-self: center;
+  padding-right: 20px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+h2 {
+  padding-left: 20px;
+  color: grey;
+}
+
+.addList {
+  border-bottom: thin solid lightgray;
+  border-top: thin solid lightgray;
+  display: flex;
+  justify-content: space-between;
+}
+
+.addInput {
+  height: 55px;
+  font-size: 22px;
+  border: none;
+  padding-left: 20px;
+}
+
+.addInput:focus {
+  outline: none;
+}
+
+.addInput:placeholder-shown {
+  font-style: italic;
+}
+
+#add {
+  content: url(./asset/add.png);
+  width: 30px;
+  align-self: center;
+  padding-right: 20px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.todos {
+  flex-direction: column;
+}
+
+.list {
+  height: 50px;
+  display: flex;
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: thin solid lightgray;
+}
+
+.description {
+  padding-top: 10px;
+  padding-left: 15px;
+  font-size: 22px;
+  color: grey;
+  font-weight: bold;
+}
+
+.checkbox {
+  width: 20px;
+}
+
+.menu {
+  content: url(./asset/menu.png);
+  opacity: 0.5;
+  width: 30px;
+  align-self: center;
+  padding-right: 20px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.clear {
+  height: 50px;
+  padding-top: 25px;
+  text-align: center;
+  font-size: 22px;
+  color: grey;
+  font-weight: bold;
+  background-color: rgb(227, 225, 225);
+  cursor: pointer;
+}
