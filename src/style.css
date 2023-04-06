@@ -92,7 +92,7 @@ h2 {
   width: 30px;
   align-self: center;
   padding-right: 20px;
-  margin-left: auto;
+  /* margin-left: auto; */
   cursor: pointer;
 }
 
@@ -104,5 +104,30 @@ h2 {
   color: grey;
   font-weight: bold;
   background-color: rgb(227, 225, 225);
+  cursor: pointer;
+}
+
+.mainDiv {
+  display: flex;
+  width: 100px;
+  margin-left: auto;
+  align-items: center;
+}
+
+.edit {
+  font-size: 22px;
+  text-decoration: underline;
+  color: grey;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.remove {
+  content: url(./asset/delete.png);
+  opacity: 0.5;
+  width: 30px;
+  align-self: center;
+  padding-right: 20px;
+  margin-left: auto;
   cursor: pointer;
 }
