@@ -61,9 +61,9 @@ This project is about creating simple todo list app with simple html css and jav
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
- ## 🚀 Live Demo <a name="live-demo"></a>
+ ## 🚀 Live Demo <a name="live-demo"></a>(https://afakhriddinov.github.io/Todo-list-app/dist/)
 
-- N/A
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p> 
 
