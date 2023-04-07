@@ -32,7 +32,7 @@
 
 
 
-This project is about creating simple todo list app with simple html css and javascript in a webpack. List items are loaded dynamically from js file. List items can be created, read, updated and deleted.
+This project is about creating simple todo list app with simple html css and javascript in a webpack. List items are loaded dynamically from js file. List items can be created, read, updated and deleted. List items can be checked and unchecked if completed. All completed tasks can be cleared with a button. All changes made by a user is saved in local storage. 
 
 
 
@@ -55,6 +55,8 @@ This project is about creating simple todo list app with simple html css and jav
 
 - **[Added todo item]**
 - **[Dynamic loading from js file]**
+- **[Create, Read, Update, and Delete functionality]**
+- **[Mark completed tasks with checkbox]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -133,7 +135,7 @@ You can deploy this project on GitHub Pages
 ## 🔭 Future Features <a name="future-features"></a>
 
 
-Include add and remove functionality
+Add more dynamic features of sending data to user's email
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -176,5 +178,5 @@ I would like to thank Microverse team and reviewers who helped me make this proj
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/AFakhriddinov/Todo-list-app/blob/CRUD-functionality/LICENSE) licensed.
+This project is [MIT](https://github.com/AFakhriddinov/Todo-list-app/blob/main/LICENSE) licensed.
 
