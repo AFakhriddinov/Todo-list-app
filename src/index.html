@@ -3,21 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/6aed09d264.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Todo app</title>
   </head>
   <body>
     <div class="container">
-      <div class="title">
-        <h2>Today's To Do</h2>
-        <i id="refresh"></i>
-      </div>
-      <div class="addList">
-        <input class="addInput" type="text" placeholder="Add to your list..." />
-        <i id="add"></i>
-      </div>
+      <div class="heading">Today's To Do</div>
+      <form class="main_form">
+        <input type="text" id="input" placeholder="Add your task here..." />
+        <button type="button" class="submit">Add</button>
+      </form>
 
-      <div class="todos"></div>
-      <div class="clear">Clear all completed</div>
+      <ul class="listContainer"></ul>
+      <button class="completed_all">Clear all completed</button>
     </div>
   </body>
 </html>
+
+

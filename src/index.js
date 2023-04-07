@@ -1,127 +1,99 @@
-import _ from "lodash";
 import "./style.css";
+import { editIndex, checkboxFunction } from "./modules/utilities.js";
+import add from "./modules/add.js";
+import remove from "./modules/delete.js";
 
-const arrays = JSON.parse(localStorage.getItem("List-Details")) || [];
+const listContainer = document.querySelector(".listContainer");
+const inputText = document.querySelector("#input");
+const addBtn = document.querySelector(".submit");
+const clearAllBtn = document.querySelector(".completed_all");
 
-const add = document.querySelector("#add");
-const task = document.querySelector(".addInput");
+// Adding new task;
 
-let i = arrays.length + 1;
+let tasks = [];
 
-add.addEventListener("click", () => {
-  if (task.value) {
-    // let i = Date.now();
-    // if (arrays.length === null) {
-    //   i = 0;
-    // } else {
-    //   i = arrays.length + 1;
-    // }
-    arrays.push({ index: i, description: task.value, completed: false });
-    localStorage.setItem("List-Details", JSON.stringify(arrays));
-    window.location.reload();
-  }
+if (localStorage.getItem("to-do") === null) {
+  tasks = [];
+} else {
+  tasks = JSON.parse(localStorage.getItem("to-do"));
+}
+const setLocalStorage = () => {
+  localStorage.setItem("to-do", JSON.stringify(tasks));
+};
+const displayList = () => {
+  listContainer.innerHTML = "";
+  let html = "";
+  tasks.forEach((task, i) => {
+    html += `<div class="items" id = "${i}">
+        <li>
+          <input type="checkbox" class="checkbox" ${
+            task.completed ? "checked" : ""
+          }>
+          ${task.description}
+        </li>
+        <div class="icons">
+        <i id="edit${i}" class="fas fa-edit hidden"></i>
+        <i  id = "trash${i}" class="fas fa-trash-alt hidden"></i>
+        <i id = "ellipsis" class="fas fa-ellipsis-v"></i>
+        </div>
+      </div>`;
+    listContainer.innerHTML = html;
+  });
+};
+displayList();
+editIndex(tasks);
+
+const items = document.querySelectorAll(".items");
+const itemsDelAndEdit = () => {
+  items.forEach((item, i) => {
+    item.addEventListener("click", (e) => {
+      document.querySelector(`#trash${i}`).classList.toggle("hidden");
+      document.querySelector(`#edit${i}`).classList.toggle("hidden");
+
+      if (e.target.closest(".fa-trash-alt")) {
+        const index =
+          e.target.closest(".fa-trash-alt").parentNode.parentNode.id;
+
+        remove(index, tasks);
+        editIndex(tasks);
+        setLocalStorage(tasks);
+        document.location.reload();
+      }
+      if (e.target.closest(".fa-edit")) {
+        const li =
+          e.target.closest(".fa-edit").parentNode.previousElementSibling;
+
+        inputText.value = li.textContent.trim();
+        inputText.focus();
+        const index = li.parentNode.id;
+        remove(index, tasks);
+      }
+    });
+  });
+};
+itemsDelAndEdit();
+// Add items to list,
+const checkbox = document.querySelectorAll(".checkbox");
+checkboxFunction(checkbox, tasks);
+
+addBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  add(tasks, inputText.value, false);
+  editIndex(tasks);
+  displayList();
+  setLocalStorage();
+  checkboxFunction(checkbox, tasks);
+  inputText.value = "";
+  document.location.reload();
 });
 
-// function resetIndex() {
-//   let initialIndex = 1;
-//   arrays.forEach((array) => {
-//     array.index = initialIndex;
-//     initialIndex += 1;
-//   });
-// }
-
-function deleteTasks(index) {
-  const remainedTasks = arrays.filter((array) => array.index !== index);
-  localStorage.setItem("List-Details", JSON.stringify(remainedTasks));
-  window.location.reload();
-}
-
-function displayTasks() {
-  const taskContent = document.querySelector(".todos");
-  for (let i = 0; i < arrays.length; i += 1) {
-    // taskContent.innerHTML += ` <div class="list">
-    //       <input class="checkbox" type="checkbox">
-    //       <div class="description">${arrays[i].description}</div>
-    //       <i class="remove" onclick="deleteTasks(${arrays[i].index})"></i>
-    //       <i class="menu"></i>
-    //   </div>
-    // `;
-    let div = document.createElement("div");
-    div.classList.add("list");
-
-    let input = document.createElement("input");
-    input.type = "checkbox";
-
-    let description = document.createElement("div");
-    description.classList.add("description");
-    description.innerText = arrays[i].description;
-
-    let mainDiv = document.createElement("div");
-    mainDiv.classList.add("mainDiv");
-
-    let edit = document.createElement("p");
-    edit.innerText = "Edit";
-    edit.classList.add("edit");
-    let removeBtn = document.createElement("i");
-    removeBtn.classList.add("remove");
-    removeBtn.onclick = function d() {
-      deleteTasks(arrays[i].index);
-    };
-    mainDiv.appendChild(edit);
-    mainDiv.appendChild(removeBtn);
-
-    let icon = document.createElement("p");
-    icon.classList.add("menu");
-
-    taskContent.appendChild(div);
-    div.appendChild(input);
-    div.appendChild(description);
-    div.appendChild(mainDiv);
-    div.appendChild(icon);
-  }
-}
-
-window.addEventListener("load", () => {
-  displayTasks();
+const filteredTasks = () => {
+  tasks = tasks.filter((task, i) => task.completed === false);
+  editIndex(tasks);
+  setLocalStorage();
+  displayList();
+};
+clearAllBtn.addEventListener("click", () => {
+  filteredTasks();
+  document.location.reload();
 });
-
-// const array = [
-//   {
-//     index: 0,
-//     description: 'Mow the lawn',
-//     completed: false,
-//   },
-//   {
-//     index: 1,
-//     description: 'Feed pets',
-//     completed: true,
-//   },
-//   {
-//     index: 2,
-//     description: 'Workout',
-//     completed: false,
-//   },
-// ];
-
-// const list = document.querySelector('.todos');
-// window.addEventListener('load', () => {
-//   for (let i = 0; i < array.length; i++) {
-//     if (array[i].completed === true) {
-//       list.innerHTML += `
-//       <div class="list">
-//         <input class="checkbox" type="checkbox" checked>
-//         <div class="description">${array[i].description}</div>
-//         <i class="menu"></i>
-//       </div>
-//   `;
-//     } else {
-//       list.innerHTML += `
-//       <div class="list">
-//         <input class="checkbox" type="checkbox">
-//         <div class="description">${array[i].description}</div>
-//         <i class="menu"></i>
-//       </div>
-//   `;
-//     }
-//   }
-// });
