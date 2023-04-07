@@ -1,7 +1,7 @@
 import './style.css';
-import { editIndex, checkboxFunction } from './modules/utilities.js';
 import add from './modules/add.js';
 import remove from './modules/delete.js';
+import { editIndex, checkboxFunction } from './modules/utilities.js';
 
 const listContainer = document.querySelector('.listContainer');
 const inputText = document.querySelector('#input');
@@ -20,12 +20,13 @@ if (localStorage.getItem('to-do') === null) {
 const setLocalStorage = () => {
   localStorage.setItem('to-do', JSON.stringify(tasks));
 };
+
 const displayList = () => {
   listContainer.innerHTML = '';
   let html = '';
   tasks.forEach((task, i) => {
     html += `<div class="items" id = "${i}">
-        <li>
+        <li class="li">
           <input type="checkbox" class="checkbox" ${
   task.completed ? 'checked' : ''
 }>
@@ -33,7 +34,7 @@ const displayList = () => {
         </li>
         <div class="icons">
         <i id="edit${i}" class="fas fa-edit hidden"></i>
-        <i  id = "trash${i}" class="fas fa-trash-alt hidden"></i>
+        <i id = "trash${i}" class="fas fa-trash-alt hidden"></i>
         <i id = "ellipsis" class="fas fa-ellipsis-v"></i>
         </div>
       </div>`;
@@ -79,8 +80,8 @@ addBtn.addEventListener('click', (e) => {
   add(tasks, inputText.value, false);
   editIndex(tasks);
   displayList();
-  setLocalStorage();
   checkboxFunction(checkbox, tasks);
+  setLocalStorage();
   inputText.value = '';
   document.location.reload();
 });

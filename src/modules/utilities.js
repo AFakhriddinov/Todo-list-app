@@ -13,8 +13,12 @@ export const checkboxFunction = (checkbox, arrayOfObject) => {
       } else {
         e.target.closest('li').classList.remove('checked');
       }
-      if (check.checked) arrayOfObject[i].completed = true;
-      else arrayOfObject[i].completed = false;
+      if (check.checked) {
+        arrayOfObject[i].completed = true;
+      } else {
+        arrayOfObject[i].completed = false;
+      }
+      localStorage.setItem('to-do', JSON.stringify(arrayOfObject));
     });
   });
 };
