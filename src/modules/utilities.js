@@ -7,11 +7,11 @@ export const editIndex = (arrayOfObject) => {
 
 export const checkboxFunction = (checkbox, arrayOfObject) => {
   checkbox.forEach((check, i) => {
-    check.addEventListener("change", (e) => {
+    check.addEventListener('change', (e) => {
       if (e.target.checked) {
-        e.target.closest("li").classList.add("checked");
+        e.target.closest('li').classList.add('checked');
       } else {
-        e.target.closest("li").classList.remove("checked");
+        e.target.closest('li').classList.remove('checked');
       }
       if (check.checked) arrayOfObject[i].completed = true;
       else arrayOfObject[i].completed = false;
