@@ -1,98 +1,41 @@
 import './style.css';
-import add from './modules/add.js';
-import remove from './modules/delete.js';
-import { editIndex, checkboxFunction } from './modules/utilities.js';
+import TodoList from './modules/todolist.js';
 
-const listContainer = document.querySelector('.listContainer');
-const inputText = document.querySelector('#input');
-const addBtn = document.querySelector('.submit');
-const clearAllBtn = document.querySelector('.completed_all');
+const list = document.querySelector('.tasks');
+const addTodo = document.querySelector('.form');
+const description = document.querySelector('#add');
+const removeTasks = document.querySelector('.removeAll');
 
-// Adding new task;
+const todoList = new TodoList();
 
-let tasks = [];
-
-if (localStorage.getItem('to-do') === null) {
-  tasks = [];
-} else {
-  tasks = JSON.parse(localStorage.getItem('to-do'));
-}
-const setLocalStorage = () => {
-  localStorage.setItem('to-do', JSON.stringify(tasks));
-};
-
-const displayList = () => {
-  listContainer.innerHTML = '';
-  let html = '';
-  tasks.forEach((task, i) => {
-    html += `<div class="items" id = "${i}">
-        <li class="li">
-          <input type="checkbox" class="checkbox" ${
-  task.completed ? 'checked' : ''
-}>
-          ${task.description}
-        </li>
-        <div class="icons">
-        <i id="edit${i}" class="fas fa-edit hidden"></i>
-        <i id = "trash${i}" class="fas fa-trash-alt hidden"></i>
-        <i id = "ellipsis" class="fas fa-ellipsis-v"></i>
-        </div>
-      </div>`;
-    listContainer.innerHTML = html;
-  });
-};
-displayList();
-editIndex(tasks);
-
-const items = document.querySelectorAll('.items');
-const itemsDelAndEdit = () => {
-  items.forEach((item, i) => {
-    item.addEventListener('click', (e) => {
-      document.querySelector(`#trash${i}`).classList.toggle('hidden');
-      document.querySelector(`#edit${i}`).classList.toggle('hidden');
-
-      if (e.target.closest('.fa-trash-alt')) {
-        const index = e.target.closest('.fa-trash-alt').parentNode.parentNode.id;
-
-        remove(index, tasks);
-        editIndex(tasks);
-        setLocalStorage(tasks);
-        document.location.reload();
-      }
-      if (e.target.closest('.fa-edit')) {
-        const li = e.target.closest('.fa-edit').parentNode.previousElementSibling;
-
-        inputText.value = li.textContent.trim();
-        inputText.focus();
-        const index = li.parentNode.id;
-        remove(index, tasks);
-      }
-    });
-  });
-};
-itemsDelAndEdit();
-// Add items to list,
-const checkbox = document.querySelectorAll('.checkbox');
-checkboxFunction(checkbox, tasks);
-
-addBtn.addEventListener('click', (e) => {
+removeTasks.addEventListener('click', () => {
+  todoList.cleanCompleted();
+  todoList.resetIndex();
+  todoList.setStorage();
+  todoList.show(list);
+});
+addTodo.addEventListener('submit', (e) => {
   e.preventDefault();
-  add(tasks, inputText.value, false);
-  editIndex(tasks);
-  displayList();
-  checkboxFunction(checkbox, tasks);
-  setLocalStorage();
-  inputText.value = '';
-  document.location.reload();
+  if (description.value.trim()) {
+    todoList.add(description.value);
+    todoList.setStorage();
+    todoList.resetIndex();
+    todoList.show(list);
+    addTodo.reset();
+  }
 });
 
-const filteredTasks = () => {
-  tasks = tasks.filter((task, i) => task.completed === false);
-  editIndex(tasks);
-  setLocalStorage();
-  displayList();
-};
-clearAllBtn.addEventListener('click', () => {
-  filteredTasks();
-  document.location.reload();
+document.addEventListener('click', (e) => {
+  if (e.target && e.target.classList.contains('delete')) {
+    const id = parseInt(e.target.parentElement.id, 10);
+    todoList.remove(id);
+    todoList.resetIndex();
+    todoList.setStorage();
+    todoList.show(list);
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  todoList.getStorage();
+  todoList.show(list);
 });
