@@ -177,6 +177,6 @@ I would like to thank Microverse Community and student Code partiner,Morning Ses
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT]([(https://github.com/AFakhriddinov/Todo-list-app/blob/main/LICENSE)) licensed.
+This project is [MIT](https://github.com/AFakhriddinov/Todo-list-app/blob/main/LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
