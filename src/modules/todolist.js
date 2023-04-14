@@ -25,7 +25,7 @@ export default class TodoList {
   show(list) {
     list.innerHTML = '';
     this.tasks.forEach((task) => {
-      const li = `<div id="${task.id}" class="list test-list">
+      const li = `<div id="${task.id}" class="list">
         <input
           type="checkbox"
           id="${task.id}"
@@ -35,12 +35,9 @@ export default class TodoList {
           class="checkbox"
         />
         <input
-          type="text" id="${
-            task.id
-          }" class="text-area test-list" name="task" value="${
-        task.description
-      }" />
-        <button class="delete test-list">&#8285;</button>
+          type="text" id="${task.id}" class="text-area" name="task" 
+          value="${task.description}" />
+        <button class="delete">&#8285;</button>
       </div>`;
       list.innerHTML += li;
     });
