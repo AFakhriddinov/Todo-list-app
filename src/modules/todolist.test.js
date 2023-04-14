@@ -5,7 +5,7 @@ const TodoList = require('./todolist.js');
 // Add
 
 describe('addTask', () => {
-  it('Add task', () => {
+  it('Add Task', () => {
     const todoList = new TodoList();
     todoList.add('Write code');
     expect(todoList.tasks).toHaveLength(1);
@@ -16,7 +16,7 @@ describe('addTask', () => {
     });
   });
 
-  it('Remove task', () => {
+  it('Remove Task', () => {
     const todoList = new TodoList();
     todoList.add('Write code');
     todoList.add('Test code');
