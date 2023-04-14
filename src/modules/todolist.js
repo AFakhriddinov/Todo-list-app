@@ -35,9 +35,8 @@ export default class TodoList {
           class="checkbox"
         />
         <input
-          type="text" id="${task.id}" class="text-area" name="task" value="${
-  task.description
-}" />
+          type="text" id="${task.id}" class="text-area" name="task" 
+          value="${task.description}" />
         <button class="delete">&#8285;</button>
       </div>`;
       list.innerHTML += li;
