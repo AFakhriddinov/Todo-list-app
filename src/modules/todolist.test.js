@@ -1,9 +1,11 @@
+jest.mock('./todolist.js');
+
 const TodoList = require('./todolist.js');
 
 // Add
 
 describe('addTask', () => {
-  it('should add a task to the list', () => {
+  it('Add task', () => {
     const todoList = new TodoList();
     todoList.add('Write code');
     expect(todoList.tasks).toHaveLength(1);
@@ -13,12 +15,8 @@ describe('addTask', () => {
       completed: false,
     });
   });
-});
 
-// Remove
-
-describe('removeTask', () => {
-  it('should remove a task from the list', () => {
+  it('Remove task', () => {
     const todoList = new TodoList();
     todoList.add('Write code');
     todoList.add('Test code');

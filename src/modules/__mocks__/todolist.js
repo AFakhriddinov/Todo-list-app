@@ -1,4 +1,4 @@
-export default class TodoList {
+class TodoList {
   constructor() {
     this.tasks = [];
   }
@@ -26,20 +26,20 @@ export default class TodoList {
     list.innerHTML = '';
     this.tasks.forEach((task) => {
       const li = `<div id="${task.id}" class="list">
-        <input
-          type="checkbox"
-          id="${task.id}"
-          name="task"
-          value="task"
-          ${task.completed ? 'checked' : ''}
-          class="checkbox"
-        />
-        <input
-          type="text" id="${task.id}" class="text-area" name="task" value="${
+          <input
+            type="checkbox"
+            id="${task.id}"
+            name="task"
+            value="task"
+            ${task.completed ? 'checked' : ''}
+            class="checkbox"
+          />
+          <input
+            type="text" id="${task.id}" class="text-area" name="task" value="${
   task.description
 }" />
-        <button class="delete">&#8285;</button>
-      </div>`;
+          <button class="delete">&#8285;</button>
+        </div>`;
       list.innerHTML += li;
     });
     const checkbox = document.querySelectorAll('.checkbox');
@@ -123,3 +123,4 @@ export default class TodoList {
     }
   };
 }
+module.exports = TodoList;
