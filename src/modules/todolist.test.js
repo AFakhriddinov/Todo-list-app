@@ -7,11 +7,11 @@ const TodoList = require('./todolist.js');
 describe('addTask', () => {
   it('Add Task', () => {
     const todoList = new TodoList();
-    todoList.add('Write code');
+    todoList.add('write code');
     expect(todoList.tasks).toHaveLength(1);
     expect(todoList.tasks[0]).toEqual({
       id: 1,
-      description: 'Write code',
+      description: 'write code',
       completed: false,
     });
   });
