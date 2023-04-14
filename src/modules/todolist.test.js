@@ -39,4 +39,14 @@ describe('addTask', () => {
     // assert that the task description has been updated correctly
     expect(todoList.tasks[0].description).toEqual('Test code');
   });
+  // Test  the showCompleted function.
+  test('showCompleted function sets completed property of all tasks to true', () => {
+    const todoList = new TodoList();
+    todoList.add('Write code');
+    todoList.add('Test code');
+    todoList.showCompleted();
+    todoList.tasks.forEach((task) => {
+      expect(task.completed).toBe(true);
+    });
+  });
 });
