@@ -94,7 +94,6 @@ body {
   border: none;
   background: transparent;
   width: 80%;
-  margin-left: 10px;
   font-size: 20px;
   color: grey;
 }
@@ -102,7 +101,7 @@ body {
 .delete {
   border: none;
   background: transparent;
-  width: 10%;
+  width: 5%;
   font-size: 26px;
   color: red;
 }
