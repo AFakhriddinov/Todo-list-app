@@ -37,7 +37,7 @@ export default class TodoList {
         <input
           type="text" id="${task.id}" class="text-area" name="task" 
           value="${task.description}" />
-          <i class="fa fa-edit edit-icon"></i>
+          <i id="${task.id}" class="fa fa-edit edit-icon"></i>
           <i class="fa fa-trash delete" aria-hidden="true"></i>
       </div>`;
       list.innerHTML += li;
@@ -72,12 +72,11 @@ export default class TodoList {
 
     const textArea = document.querySelectorAll(".text-area");
     textArea.forEach((area) => {
-      area.addEventListener("change", () => {
+      area.addEventListener("input", () => {
         const result = this.tasks.filter((task) => task.id === Number(area.id));
         this.tasks[result[0].id - 1].description = area.value;
         this.setStorage();
-        const editIcons = document.querySelector(".edit-icon");
-        editIcons.classList.remove("edit-icon");
+        // window.location.reload();
       });
     });
 
@@ -85,9 +84,7 @@ export default class TodoList {
     edits.forEach((edit) => {
       edit.addEventListener("focus", () => {
         const editIcons = document.querySelector(".edit-icon");
-        // editIcons.forEach((editIcon) => {
         editIcons.classList.remove("edit-icon");
-        // });
       });
     });
   }
