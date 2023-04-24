@@ -3,24 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/6aed09d264.js"
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
       crossorigin="anonymous"
-    ></script>
-    <title>Todo app</title>
+      referrerpolicy="no-referrer"
+    />
+    <title>Web Pack</title>
   <script defer src="main.js"></script></head>
   <body>
-    <div class="container">
-      <div class="heading">Today's To Do</div>
-      <form class="main_form">
-        <input type="text" id="input" placeholder="Add your task here..." />
-        <button type="button" class="submit">Add</button>
+    <section id="todolist-app-section">
+      <div class="header">
+        <h1>Today's To Do</h1>
+        <i class="fa fa-refresh" aria-hidden="true"></i>
+      </div>
+      <form class="form">
+        <input
+          autocomplete="off"
+          type="text"
+          id="add"
+          class="inputs"
+          placeholder="Add To Your List..."
+        />
+        <button type="submit" class="add">&#8617;</button>
       </form>
-
-      <ul class="listContainer"></ul>
-      <button class="completed_all">Clear all completed</button>
-    </div>
+      <div class="tasks"></div>
+      <button class="removeAll">Clear all completed</button>
+    </section>
+    <script src="index.js" type="module"></script>
   </body>
 </html>
-
-

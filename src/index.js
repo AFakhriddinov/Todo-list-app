@@ -1,20 +1,21 @@
-import './style.css';
-import TodoList from './modules/todolist.js';
+import "./style.css";
+import TodoList from "./modules/todolist.js";
 
-const list = document.querySelector('.tasks');
-const addTodo = document.querySelector('.form');
-const description = document.querySelector('#add');
-const removeTasks = document.querySelector('.removeAll');
+const list = document.querySelector(".tasks");
+const addTodo = document.querySelector(".form");
+const description = document.querySelector("#add");
+const removeTasks = document.querySelector(".removeAll");
 
 const todoList = new TodoList();
 
-removeTasks.addEventListener('click', () => {
+removeTasks.addEventListener("click", () => {
   todoList.cleanCompleted();
   todoList.resetIndex();
   todoList.setStorage();
   todoList.show(list);
 });
-addTodo.addEventListener('submit', (e) => {
+
+addTodo.addEventListener("submit", (e) => {
   e.preventDefault();
   if (description.value.trim()) {
     todoList.add(description.value);
@@ -25,8 +26,8 @@ addTodo.addEventListener('submit', (e) => {
   }
 });
 
-document.addEventListener('click', (e) => {
-  if (e.target && e.target.classList.contains('delete')) {
+document.addEventListener("click", (e) => {
+  if (e.target && e.target.classList.contains("delete")) {
     const id = parseInt(e.target.parentElement.id, 10);
     todoList.remove(id);
     todoList.resetIndex();
@@ -35,7 +36,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   todoList.getStorage();
   todoList.show(list);
 });
