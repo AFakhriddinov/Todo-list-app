@@ -86,7 +86,7 @@ This is simple project of to do lists and testing its functionalities.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-N/A
+live demo [link](https://todo-list-app123.netlify.app/)
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
